@@ -1,0 +1,69 @@
+# An API for Asian Cities
+
+Write a JSON API with a single endpoint `/` that returns a list of Asia's largest cities. The API must use Wikipedia as a data source, returning the list of cities found on the page: https://en.wikipedia.org/wiki/List_of_metropolitan_areas_in_Asia. It is expected to get this information in real time, and change as Wikipedia changes.
+
+The API will return a JSON array of city descriptions, each city containing the following fields:
+
+* `name` the city name
+* `country` the name of the country
+* `population` the city's population
+* `url` the URL to the city's page on Wikipedia
+
+For e.g.
+
+```json
+{
+  "name": "Shanghai",
+  "country": "China",
+  "population": 23390000,
+  "url": "https://en.wikipedia.org/wiki/Shanghai"
+}
+```
+
+A typical `curl` interaction might look like this:
+
+```
+> curl http://localhost:4000/
+[
+  {
+    "name": "Tokyo",
+    "country": "Japan",
+    "population": 39800000,
+    "url": "https://en.wikipedia.org/wiki/Greater_Tokyo_Area"
+  },
+  {
+    "name": "Jakarta",
+    "country": "Indonesia",
+    "population": 28900000,
+    "url": "https://en.wikipedia.org/wiki/Jakarta"
+  },
+  ...
+]
+```
+
+## For Bonus Points
+
+Add the city's description as found in the first paragraph on the city's Wikipedia page, in the `description` field.
+
+For example:
+
+```json
+[
+  {
+    "name": "Tokyo",
+    "country": "Japan",
+    "population": 39800000,
+    "url": "https://en.wikipedia.org/wiki/Greater_Tokyo_Area",
+    "description": "The Greater Tokyo Area is the most populous metropolitan area in the world, consisting of the Kantō region of Japan, including the Tokyo Metropolis, as well as the prefecture of Yamanashi of the neighboring Chūbu region. In Japanese, it is referred to by various terms, one of the most common being National Capital Region (首都圏, Shuto-ken)."
+  },
+  {
+    "name": "Jakarta",
+    "country": "Indonesia",
+    "population": 28900000,
+    "url": "https://en.wikipedia.org/wiki/Jakarta",
+    "description": "Jakarta (/dʒəˈkɑːrtə/; Indonesian pronunciation: [dʒaˈkarta]), officially the Special Capital Region of Jakarta (Indonesian: Daerah Khusus Ibu Kota Jakarta), is the capital and largest city of Indonesia. Located on the northwest coast of the world's most populous island Java, it is the centre of economics, culture and politics of Indonesia, with a population of 10,075,310 as of 2014[update].[6][8] The Greater Jakarta metropolitan area, known as Jabodetabek (a name formed by combining the initial syllables of Jakarta, Bogor, Depok, Tangerang and Bekasi), is the second largest urban agglomeration and 2nd largest urban area in the world after Tokyo, with a population of 30,214,303 as of 2010[update] census.[9] Jakarta's business opportunities, as well as its potential to offer a higher standard of living, attract migrants from all over the Indonesian archipelago, making it a melting pot of many communities and cultures.[10] Jakarta is officially a province with special capital region status, but is commonly referred to as a city. The Jakarta provincial government consists of five administrative cities and one administrative regency."
+  },
+  ...
+] 
+```
+
